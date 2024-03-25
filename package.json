@@ -30,7 +30,7 @@
     "mobile:build:production": "npm run mobile:build",
     "mobile:run:android": "npm run mobile:build:dev && cap run android",
     "mobile:run:ios": "npm run mobile:build:dev && cap run ios",
-    "ios": "rm -rf ./dist/* && webpack --config ./webpack-ios.config.ts",
+    "ios": "rm -rf ./ios_dist && webpack --config ./webpack-ios.config.ts && cp ios/index.html ios_dist/",
     "build:icons": "fantasticon",
     "check": "tsc && stylelint \"**/*.{css,scss}\" && eslint . --ext .ts,.tsx",
     "check:fix": "npm run check -- --fix",

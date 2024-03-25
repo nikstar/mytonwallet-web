@@ -1,6 +1,5 @@
 import path from 'path';
-import { DefinePlugin, EnvironmentPlugin, ProvidePlugin, webpack } from 'webpack';
-
+import { DefinePlugin, EnvironmentPlugin, ProvidePlugin } from 'webpack';
 
 import { PRODUCTION_URL } from './src/config';
 
@@ -21,12 +20,12 @@ export default {
   },
 
   entry: {
-    main: './src/ios.js',
+    main: './src/ios_entrypoint.js',
   },
 
   output: {
     filename: '[name].js',
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, 'ios_dist'),
     chunkFormat: false,
   },
 
@@ -44,7 +43,10 @@ export default {
       Buffer: ['buffer', 'Buffer'],
     }),
     new DefinePlugin({
-      process: { env: {} },
+      process: {
+        env: {
+        },
+      },
     }),
   ],
 
@@ -57,5 +59,4 @@ export default {
       },
     ],
   },
-
 };

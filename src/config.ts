@@ -17,10 +17,10 @@ export const IS_FIREFOX_EXTENSION = process.env.IS_FIREFOX_EXTENSION === '1';
 export const IS_PACKAGED_ELECTRON = process.env.IS_PACKAGED_ELECTRON === '1';
 export const IS_CAPACITOR = process.env.IS_CAPACITOR === '1';
 
-export const ELECTRON_HOST_URL = 'https://dumb-host';
+export const ELECTRON_HOST_URL = 'api-https://dumb-host';
 export const INACTIVE_MARKER = '[Inactive]';
-export const PRODUCTION_URL = 'https://mytonwallet.app';
-export const BETA_URL = 'https://beta.mytonwallet.app';
+export const PRODUCTION_URL = 'api-https://mytonwallet.app';
+export const BETA_URL = 'api-https://beta.mytonwallet.app';
 export const BASE_URL = process.env.BASE_URL;
 
 export const SWAP_FEE_ADDRESS = process.env.SWAP_FEE_ADDRESS || 'UQDUkQbpTVIgt7v66-JTFR-3-eXRFz_4V66F-Ufn6vOg0GOp';
@@ -31,7 +31,7 @@ export const DEBUG_ALERT_MSG = 'Shoot!\nSomething went wrong, please see the err
 
 export const PIN_LENGTH = 4;
 export const NATIVE_BIOMETRICS_USERNAME = 'MyTonWallet';
-export const NATIVE_BIOMETRICS_SERVER = 'https://mytonwallet.app';
+export const NATIVE_BIOMETRICS_SERVER = 'api-https://mytonwallet.app';
 
 export const MNEMONIC_COUNT = 24;
 export const MNEMONIC_CHECK_COUNT = 3;
@@ -67,38 +67,38 @@ export const THEME_DEFAULT = 'system';
 export const MAIN_ACCOUNT_ID = '0-ton-mainnet';
 
 export const TONHTTPAPI_MAINNET_URL = process.env.TONHTTPAPI_MAINNET_URL
-  || 'https://tonhttpapi.mytonwallet.org/api/v2/jsonRPC';
+  || 'api-https://tonhttpapi.mytonwallet.org/api/v2/jsonRPC';
 export const TONHTTPAPI_MAINNET_API_KEY = process.env.TONHTTPAPI_MAINNET_API_KEY;
 export const ELECTRON_TONHTTPAPI_MAINNET_API_KEY = process.env.ELECTRON_TONHTTPAPI_MAINNET_API_KEY;
 export const TONHTTPAPI_V3_MAINNET_API_URL = process.env.TONHTTPAPI_V3_MAINNET_API_KEY
-  || 'https://tonhttpapi-v3.mytonwallet.org/api/v3';
-export const TONAPIIO_MAINNET_URL = process.env.TONAPIIO_MAINNET_URL || 'https://tonapiio.mytonwallet.org';
+  || 'api-https://tonhttpapi-v3.mytonwallet.org/api/v3';
+export const TONAPIIO_MAINNET_URL = process.env.TONAPIIO_MAINNET_URL || 'api-https://tonapiio.mytonwallet.org';
 
 export const TONHTTPAPI_TESTNET_URL = process.env.TONHTTPAPI_TESTNET_URL
-  || 'https://tonhttpapi-testnet.mytonwallet.org/api/v2/jsonRPC';
+  || 'api-https://tonhttpapi-testnet.mytonwallet.org/api/v2/jsonRPC';
 export const TONHTTPAPI_TESTNET_API_KEY = process.env.TONHTTPAPI_TESTNET_API_KEY;
 export const ELECTRON_TONHTTPAPI_TESTNET_API_KEY = process.env.ELECTRON_TONHTTPAPI_TESTNET_API_KEY;
 export const TONHTTPAPI_V3_TESTNET_API_URL = process.env.TONHTTPAPI_V3_TESTNET_API_KEY
-  || 'https://tonhttpapi-v3-testnet.mytonwallet.org/api/v3';
-export const TONAPIIO_TESTNET_URL = process.env.TONAPIIO_TESTNET_URL || 'https://tonapiio-testnet.mytonwallet.org';
+  || 'api-https://tonhttpapi-v3-testnet.mytonwallet.org/api/v3';
+export const TONAPIIO_TESTNET_URL = process.env.TONAPIIO_TESTNET_URL || 'api-https://tonapiio-testnet.mytonwallet.org';
 
-export const BRILLIANT_API_BASE_URL = process.env.BRILLIANT_API_BASE_URL || 'https://api.mytonwallet.org';
+export const BRILLIANT_API_BASE_URL = process.env.BRILLIANT_API_BASE_URL || 'api-https://api.mytonwallet.org';
 
 export const FRACTION_DIGITS = 9;
 export const SHORT_FRACTION_DIGITS = 2;
 
-export const MY_TON_WALLET_PROMO_URL = 'https://mytonwallet.io';
-export const TELEGRAM_WEB_URL = 'https://web.telegram.org/a/';
-export const TONSCAN_BASE_MAINNET_URL = 'https://tonscan.org/';
-export const TONSCAN_BASE_TESTNET_URL = 'https://testnet.tonscan.org/';
-export const GETGEMS_BASE_MAINNET_URL = 'https://getgems.io/';
-export const GETGEMS_BASE_TESTNET_URL = 'https://testnet.getgems.io/';
+export const MY_TON_WALLET_PROMO_URL = 'api-https://mytonwallet.io';
+export const TELEGRAM_WEB_URL = 'api-https://web.telegram.org/a/';
+export const TONSCAN_BASE_MAINNET_URL = 'api-https://tonscan.org/';
+export const TONSCAN_BASE_TESTNET_URL = 'api-https://testnet.tonscan.org/';
+export const GETGEMS_BASE_MAINNET_URL = 'api-https://getgems.io/';
+export const GETGEMS_BASE_TESTNET_URL = 'api-https://testnet.getgems.io/';
 
 export const CHANGELLY_SUPPORT_EMAIL = 'support@changelly.com';
 export const CHANGELLY_SECURITY_EMAIL = 'security@changelly.com';
-export const CHANGELLY_TERMS_OF_USE = 'https://changelly.com/terms-of-use';
-export const CHANGELLY_PRIVACY_POLICY = 'https://changelly.com/privacy-policy';
-export const CHANGELLY_AML_KYC = 'https://changelly.com/aml-kyc';
+export const CHANGELLY_TERMS_OF_USE = 'api-https://changelly.com/terms-of-use';
+export const CHANGELLY_PRIVACY_POLICY = 'api-https://changelly.com/privacy-policy';
+export const CHANGELLY_AML_KYC = 'api-https://changelly.com/aml-kyc';
 export const CHANGELLY_WAITING_DEADLINE = 3 * 60 * 60 * 1000; // 3 hour
 
 export const TON_TOKEN_SLUG = 'toncoin';
@@ -164,7 +164,7 @@ export const NOMINATORS_STAKING_MIN_AMOUNT = ONE_TON * 10001n;
 
 export const TON_PROTOCOL = 'ton://';
 export const TONCONNECT_PROTOCOL = 'tc://';
-export const TONCONNECT_UNIVERSAL_URL = 'https://connect.mytonwallet.org';
+export const TONCONNECT_UNIVERSAL_URL = 'api-https://connect.mytonwallet.org';
 export const TONCONNECT_PROTOCOL_VERSION = 2;
 export const TONCONNECT_WALLET_JSBRIDGE_KEY = 'mytonwallet';
 
@@ -207,7 +207,7 @@ export const INIT_SWAP_ASSETS: Record<string, ApiSwapAsset> = {
     slug: 'ton-eqdcbkghmc',
     decimals: 8,
     // eslint-disable-next-line max-len
-    image: 'https://cache.tonapi.io/imgproxy/LaFKdzahVX9epWT067gyVLd8aCa1lFrZd7Rp9siViEE/rs:fill:200:200:1/g:no/aHR0cHM6Ly9icmlkZ2UudG9uLm9yZy90b2tlbi8xLzB4MjI2MGZhYzVlNTU0MmE3NzNhYTQ0ZmJjZmVkZjdjMTkzYmMyYzU5OS5wbmc.webp',
+    image: 'api-https://cache.tonapi.io/imgproxy/LaFKdzahVX9epWT067gyVLd8aCa1lFrZd7Rp9siViEE/rs:fill:200:200:1/g:no/aHR0cHM6Ly9icmlkZ2UudG9uLm9yZy90b2tlbi8xLzB4MjI2MGZhYzVlNTU0MmE3NzNhYTQ0ZmJjZmVkZjdjMTkzYmMyYzU5OS5wbmc.webp',
     contract: 'EQDcBkGHmC4pTf34x3Gm05XvepO5w60DNxZ-XT4I6-UGG5L5',
     price: 0,
     isPopular: false,
