@@ -50,6 +50,21 @@ export async function fetchAllActivitySlice(accountId: string, lastTxIds: ApiTxI
   }
 }
 
+export async function fetchAllActivitySliceForTokens(accountId: string, tokens: string[], limit?: number) {
+  const { network, blockchain } = parseAccountId(accountId);
+  const activeBlockchain = blockchains[blockchain];
+  try {
+    const transactions = await activeBlockchain.getMergedTransactionSliceForTokens(accountId, tokens, limit ?? 100);
+    const activities = await swapReplaceTransactions(accountId, transactions, network);
+    await activeBlockchain.fixTokenActivitiesAddressForm(network, activities);
+    return activities;
+  } catch (err) {
+    logDebugError('fetchAllActivitySliceForTokens', err);
+    return handleServerError(err);
+  }
+}
+
+
 export function checkTransactionDraft(
   accountId: string, slug: string, toAddress: string, amount: bigint, comment?: string, shouldEncrypt?: boolean,
 ) {

@@ -23,6 +23,7 @@ export {
   checkMultiTransactionDraft,
   submitMultiTransfer,
   getMergedTransactionSlice,
+  getMergedTransactionSliceForTokens,
   sendSignedMessage,
   sendSignedMessages,
   decryptComment,

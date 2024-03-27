@@ -460,6 +460,27 @@ export async function getMergedTransactionSlice(accountId: string, lastTxIds: Ap
   return allTxs;
 }
 
+export async function getMergedTransactionSliceForTokens(accountId: string, tokens: string[], limit: number) {
+  const tonTxs = await getAccountTransactionSlice(accountId, undefined, undefined, limit);
+
+  if (!tonTxs.length) {
+    return [];
+  }
+
+  const lastTonTxId = tonTxs[tonTxs.length - 1].txId;
+
+  const results = await Promise.all(tokens
+    .filter((slug) => slug !== TON_TOKEN_SLUG)
+    .map((slug) => {
+      return getTokenTransactionSlice(accountId, slug, undefined, lastTonTxId, GET_TRANSACTIONS_MAX_LIMIT);
+    }));
+
+  const allTxs = [...tonTxs, ...results.flat()];
+  allTxs.sort((a, b) => compareActivities(a, b));
+
+  return allTxs;
+}
+
 export async function getTokenTransactionSlice(
   accountId: string,
   tokenSlug: string,

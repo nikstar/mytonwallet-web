@@ -39370,6 +39370,7 @@ __webpack_require__.d(ton_namespaceObject, {
   getAccountTransactionSlice: () => (getAccountTransactionSlice),
   getAddressTokenBalances: () => (getAddressTokenBalances),
   getMergedTransactionSlice: () => (getMergedTransactionSlice),
+  getMergedTransactionSliceForTokens: () => (getMergedTransactionSliceForTokens),
   getNftUpdates: () => (getNftUpdates),
   getStakingState: () => (getStakingState),
   getTokenTransactionSlice: () => (getTokenTransactionSlice),
@@ -39449,6 +39450,7 @@ __webpack_require__.d(methods_namespaceObject, {
   fetchAccountConfigForDebugPurposesOnly: () => (fetchAccountConfigForDebugPurposesOnly),
   fetchAddress: () => (fetchAddress),
   fetchAllActivitySlice: () => (fetchAllActivitySlice),
+  fetchAllActivitySliceForTokens: () => (fetchAllActivitySliceForTokens),
   fetchBackendStakingState: () => (fetchBackendStakingState),
   fetchDappCatalog: () => (fetchDappCatalog),
   fetchNfts: () => (fetchNfts),
@@ -44971,6 +44973,19 @@ async function getMergedTransactionSlice(accountId, lastTxIds, limit) {
   allTxs.sort((a, b) => compareActivities(a, b));
   return allTxs;
 }
+async function getMergedTransactionSliceForTokens(accountId, tokens, limit) {
+  const tonTxs = await getAccountTransactionSlice(accountId, undefined, undefined, limit);
+  if (!tonTxs.length) {
+    return [];
+  }
+  const lastTonTxId = tonTxs[tonTxs.length - 1].txId;
+  const results = await Promise.all(tokens.filter(slug => slug !== TON_TOKEN_SLUG).map(slug => {
+    return getTokenTransactionSlice(accountId, slug, undefined, lastTonTxId, GET_TRANSACTIONS_MAX_LIMIT);
+  }));
+  const allTxs = [...tonTxs, ...results.flat()];
+  allTxs.sort((a, b) => compareActivities(a, b));
+  return allTxs;
+}
 async function getTokenTransactionSlice(accountId, tokenSlug, toTxId, fromTxId, limit) {
   if (tokenSlug === TON_TOKEN_SLUG) {
     return getAccountTransactionSlice(accountId, toTxId, fromTxId, limit);
@@ -46518,6 +46533,22 @@ async function fetchAllActivitySlice(accountId, lastTxIds, limit) {
   const activeBlockchain = blockchains[blockchain];
   try {
     const transactions = await activeBlockchain.getMergedTransactionSlice(accountId, lastTxIds, limit);
+    const activities = await swapReplaceTransactions(accountId, transactions, network);
+    await activeBlockchain.fixTokenActivitiesAddressForm(network, activities);
+    return activities;
+  } catch (err) {
+    logDebugError('fetchAllActivitySlice', err);
+    return handleServerError(err);
+  }
+}
+async function fetchAllActivitySliceForTokens(accountId, tokens, limit) {
+  const {
+    network,
+    blockchain
+  } = parseAccountId(accountId);
+  const activeBlockchain = blockchains[blockchain];
+  try {
+    const transactions = await activeBlockchain.getMergedTransactionSliceForTokens(accountId, tokens, limit);
     const activities = await swapReplaceTransactions(accountId, transactions, network);
     await activeBlockchain.fixTokenActivitiesAddressForm(network, activities);
     return activities;
